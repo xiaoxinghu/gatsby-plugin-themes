@@ -1,0 +1,20 @@
+{
+  "name": "gatsby-plugin-themes",
+  "version": "0.1.0",
+  "description": "Gatsby plugin for defining multiple themes, and switch between them.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo dev from root"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "theme",
+    "context"
+  ],
+  "author": "Xiaoxing Hu <xiaoxing@huxx.org>",
+  "license": "MIT",
+  "peerDependencies": {
+    "gatsby": "2.x"
+  }
+}
