@@ -1,6 +1,8 @@
 const React = require('react')
 const { createContext, useEffect, useState } = require('react')
 
+const KEY = `gatsby-plugin-themes-theme-index`
+
 const ThemeContext = createContext({
   theme: {},
   next: () => undefined,
@@ -15,22 +17,24 @@ const ThemeProvider = ({ themes, children }) => {
   const [themeIndex, setThemeIndex] = useState(0)
   const theme = themes[themeIndex]
 
-  const next = () => {
-    const newTheme = (themeIndex + 1) % themes.length
-    console.log(`old: ${themeIndex}, next: ${newTheme}`)
-    setThemeIndex(newTheme)
-    // localStorage.setItem("dark", JSON.stringify(toggledTheme))
+  const setTheme = index => {
+    const i = index % themes.length
+    localStorage.setItem(KEY, i)
+    setThemeIndex(i)
   }
 
-  // useEffect(() => {
-  //   const localStorageTheme = localStorage.getItem("theme")
-  //   const latestTheme = localStorageTheme && JSON.parse(localStorageTheme)
-  //   if (latestTheme) {
-  //     setIsDark(latestTheme)
-  //   } else if (supportsDarkMode()) {
-  //     setIsDark(true)
-  //   }
-  // }, [])
+  const next = () => {
+    setTheme(themeIndex + 1)
+  }
+
+  useEffect(() => {
+    const localThemeIndex = Number(localStorage.getItem(KEY))
+    if (localThemeIndex !== NaN) {
+      setTheme(localThemeIndex)
+    } else if (supportsDarkMode()) {
+      setTheme(Math.max(themes.findIndex(t => t.dark), 0))
+    }
+  }, [])
 
   return (
     <ThemeContext.Provider
