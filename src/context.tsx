@@ -1,9 +1,9 @@
-const React = require('react')
-const { createContext, useEffect, useState } = require('react')
+import React from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 const KEY = `gatsby-plugin-themes-theme-index`
 
-const ThemeContext = createContext({
+export const ThemeContext = createContext({
   theme: {},
   next: () => undefined,
 })
@@ -11,16 +11,15 @@ const ThemeContext = createContext({
 const supportsDarkMode = () =>
   window.matchMedia("(prefers-color-scheme: dark)").matches
 
-exports.ThemeContext = ThemeContext
-
-const ThemeProvider = ({ themes, children }) => {
+export const ThemeProvider = props => {
+  const { themes, children } = props
   const _themes = Array.isArray(themes) ? themes : [themes]
   const [themeIndex, setThemeIndex] = useState(0)
   const theme = _themes[themeIndex]
 
   const setTheme = index => {
     const i = index % _themes.length
-    localStorage.setItem(KEY, i)
+    localStorage.setItem(KEY, `${i}`)
     setThemeIndex(i)
   }
 
@@ -49,4 +48,3 @@ const ThemeProvider = ({ themes, children }) => {
   )
 }
 
-exports.ThemeProvider = ThemeProvider

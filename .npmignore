@@ -1,7 +1,6 @@
+src
 node_modules
+tsconfig.*
 .DS_Store
 .cache
-/*.js
-/*.ts
-/*.map
 .tool-versions

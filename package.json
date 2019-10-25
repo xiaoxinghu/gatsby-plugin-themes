@@ -1,10 +1,13 @@
 {
   "name": "gatsby-plugin-themes",
-  "version": "0.3.0",
+  "version": "0.3.7",
   "description": "Gatsby plugin for defining multiple themes, and switch between them.",
   "main": "index.js",
   "scripts": {
-    "dev": "echo dev from root"
+    "build": "npm run clean && npm run compile",
+    "compile": "tsc",
+    "compile:watch": "tsc -w",
+    "clean": "rm -rf *.js"
   },
   "homepage": "https://github.com/xiaoxinghu/gatsby-plugin-themes/blob/master/README.md",
   "repository": {
@@ -27,5 +30,11 @@
   },
   "peerDependencies": {
     "gatsby": "2.x"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.7",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "typescript": "^3.6.4"
   }
 }

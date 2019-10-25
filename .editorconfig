@@ -9,11 +9,19 @@ insert_final_newline = true
 [vcbuild.bat]
 end_of_line = crlf
 
-[**/*.{js,jsx}]
+[*.{js,ts}]
 indent_style = space
 indent_size = 2
 
-[{package.json,*.yml}]
+[{*.json,*.yml}]
+indent_style = space
+indent_size = 2
+
+[src/**.{h,cc}]
+indent_style = space
+indent_size = 2
+
+[test/*.py]
 indent_style = space
 indent_size = 2
 
@@ -25,7 +33,7 @@ indent_size = 2
 indent_style = tab
 indent_size = 8
 
-[{node_modules}/**]
+[{deps}/**]
 indent_style = ignore
 indent_size = ignore
 end_of_line = ignore

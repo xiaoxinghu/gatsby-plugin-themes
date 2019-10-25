@@ -1,10 +1,10 @@
-const fs = require(`fs`)
-const path = require(`path`)
-const os = require(`os`)
+import fs from 'fs'
+import path from 'path'
+import os from 'os'
 
 // Write out theme modules to .cache.
 
-exports.onPreBootstrap = ({ store }, pluginOptions) => {
+export const onPreBootstrap = ({ store }, pluginOptions) => {
 
   const program = store.getState().program
 

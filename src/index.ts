@@ -1,5 +1,4 @@
 const { ThemeContext } = require('./context')
 
-module.exports = {
-  ThemeContext,
-}
+export { ThemeContext }
+
