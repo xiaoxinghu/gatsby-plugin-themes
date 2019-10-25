@@ -4,3 +4,4 @@ tsconfig.*
 .DS_Store
 .cache
 .tool-versions
+.editorconfig

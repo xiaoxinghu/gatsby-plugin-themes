@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-themes",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Gatsby plugin for defining multiple themes, and switch between them.",
   "main": "index.js",
   "scripts": {
