@@ -6,13 +6,19 @@ const os = require(`os`)
 
 exports.onPreBootstrap = ({ store }, pluginOptions) => {
 
-  const { themes } = pluginOptions
+  const program = store.getState().program
 
-  const all = themes.map(theme => `require("${theme}")`)
-
-  const module = `
-const all = [${ all.join(',')}]
-module.exports = { all }`
+  let module
+  if (pluginOptions.pathToConfig) {
+    module = `module.exports = require("${
+      path.isAbsolute(pluginOptions.pathToConfig)
+        ? pluginOptions.pathToConfig
+        : path.join(program.directory, pluginOptions.pathToConfig)
+    }")`
+    if (os.platform() === `win32`) {
+      module = module.split(`\\`).join(`\\\\`)
+    }
+  }
 
   const dir = `${__dirname}/.cache`
 

@@ -1,13 +1,13 @@
 const React = require('react')
 const { ThemeProvider } = require('./context')
-const { all } = require('./.cache/themes')
+const themes = require('./.cache/themes')
 
 const wrapRootElement = (
   { element },
 ) => {
 
   return (
-    <ThemeProvider themes={all}>
+    <ThemeProvider themes={themes}>
       { element }
     </ThemeProvider>
   )

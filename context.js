@@ -14,11 +14,12 @@ const supportsDarkMode = () =>
 exports.ThemeContext = ThemeContext
 
 const ThemeProvider = ({ themes, children }) => {
+  const _themes = Array.isArray(themes) ? themes : [themes]
   const [themeIndex, setThemeIndex] = useState(0)
-  const theme = themes[themeIndex]
+  const theme = _themes[themeIndex]
 
   const setTheme = index => {
-    const i = index % themes.length
+    const i = index % _themes.length
     localStorage.setItem(KEY, i)
     setThemeIndex(i)
   }
@@ -32,7 +33,7 @@ const ThemeProvider = ({ themes, children }) => {
     if (localThemeIndex !== NaN) {
       setTheme(localThemeIndex)
     } else if (supportsDarkMode()) {
-      setTheme(Math.max(themes.findIndex(t => t.dark), 0))
+      setTheme(Math.max(_themes.findIndex(t => t.dark), 0))
     }
   }, [])
 
