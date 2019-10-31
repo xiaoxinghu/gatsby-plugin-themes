@@ -15,7 +15,7 @@ export const ThemeProvider = props => {
   const { themes, children } = props
   const _themes = Array.isArray(themes) ? themes : [themes]
   const [themeIndex, setThemeIndex] = useState(0)
-  const theme = _themes[themeIndex]
+  const theme = _themes[themeIndex % _themes.length]
 
   const setTheme = index => {
     const i = index % _themes.length
